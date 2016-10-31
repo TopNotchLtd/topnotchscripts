@@ -180,6 +180,13 @@ html += "<strong>Next Steps</strong><br>" + nextSteps
 part1 = MIMEText(text, 'plain')
 part2 = MIMEText(html, 'html')
 
+preview = raw_input("Would you like a preview of the message to be sent? (y/n): ").lower()
+if preview == "yes" or preview == "y":
+	print part1
+	accept = raw_input("Would you like to send this message? (y/n): ").lower()
+	if accept != "yes" and accept != "y":
+		sys.exit()
+
 msg.attach(part1)
 msg.attach(part2)
 
