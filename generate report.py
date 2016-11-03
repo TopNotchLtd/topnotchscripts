@@ -11,7 +11,7 @@ from optparse import OptionParser
 emailAddr = ""
 password = ""
 #Remove your address if you don't want to send emails to yourself
-ccRecipients = "jake@topnotchltd.com, nolan@topnotchltd.com, billy@topnotchltd.com, daniel@topnotchltd.com, danny@topnotchltd.com, ivan@topnotchltd.com"
+ccRecipients = "jake@topnotchltd.com, billy@topnotchltd.com, nolan@topnotchltd.com, daniel@topnotchltd.com, danny@topnotchltd.com, ivan@topnotchltd.com"
 
 parser = OptionParser()
 parser.add_option("-t", "--type", action="store", type="string", dest="type", default="txt", help="filetype to read from. Only valid values are 'csv' and 'txt'")
@@ -127,7 +127,7 @@ else:
 	print "ERROR: Incorrect filetype specified"
 	sys.exit()
 
-print "Sending mail..."
+print "Building mail..."
 #send email
 msg = MIMEMultipart('alternative')
 msg["Subject"] = str(now.month) + "/" + str(now.day) + "/" + str(now.year) + " QA Report - " + project
@@ -187,6 +187,7 @@ if preview == "yes" or preview == "y":
 	if accept != "yes" and accept != "y":
 		sys.exit()
 
+print "Sending mail..."
 msg.attach(part1)
 msg.attach(part2)
 
