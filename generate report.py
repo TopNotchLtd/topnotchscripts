@@ -11,7 +11,7 @@ from optparse import OptionParser
 emailAddr = ""
 password = ""
 #Remove your address if you don't want to send emails to yourself
-ccRecipients = "jake@topnotchltd.com, billy@topnotchltd.com, nolan@topnotchltd.com, daniel@topnotchltd.com, danny@topnotchltd.com, ivan@topnotchltd.com"
+ccRecipients = "billy@topnotchltd.com, jake@topnotchltd.com, nolan@topnotchltd.com, daniel@topnotchltd.com, danny@topnotchltd.com, ivan@topnotchltd.com"
 
 parser = OptionParser()
 parser.add_option("-t", "--type", action="store", type="string", dest="type", default="txt", help="filetype to read from. Only valid values are 'csv' and 'txt'")
@@ -62,7 +62,7 @@ now = datetime.datetime.now()
 #Create functions
 def ReadCsv(file):
 	try:
-		with open(created, 'rU') as infile:
+		with open(file, 'rU') as infile:
 			reader = csv.DictReader(infile)
 			data = {}
 			for row in reader:
@@ -100,7 +100,7 @@ def BuildListText(list):
 			output["html"] += '<a href="' + c + '">' + c + "</a><br>"
 	elif fileType == "csv":
 		for j in range(0,len(list["keys"])):
-			output["text"] += list["keys"][j] + " - " + list["summaries"][j]
+			output["text"] += list["keys"][j] + " - " + list["summaries"][j] + "\n"
 			output["html"] += '<a href="' + trackerUrl + list["keys"][j] + '">' + list["keys"][j] + " - " + list["summaries"][j] + "</a><br>"
 
 	return output;
